@@ -20,6 +20,12 @@ export function useRegister() {
 	});
 }
 
+export function useResendConfirmation() {
+	return useMutation({
+		mutationFn: authApi.resendConfirmation,
+	});
+}
+
 export function useCurrentUser() {
 	return useQuery({
 		queryKey: ['currentUser'],

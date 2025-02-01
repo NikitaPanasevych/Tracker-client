@@ -29,3 +29,19 @@ apiClient.interceptors.response.use(
 		return Promise.reject(error);
 	}
 );
+
+apiClient.interceptors.response.use(
+	(response) => response,
+	(error) => {
+		const apiError = error.response?.data;
+
+		if (apiError) {
+			return Promise.reject({
+				message: apiError.message,
+				statusCode: apiError.statusCode,
+			});
+		}
+
+		return Promise.reject(error);
+	}
+);

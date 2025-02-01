@@ -15,4 +15,6 @@ export const authApi = {
 	getCurrentUser: () => apiClient.get<{ id: string; email: string }>('/auth/me'),
 
 	logout: () => apiClient.post<void>('/auth/logout'),
+
+	resendConfirmation: (email: string) => apiClient.post<void>('/auth/resend-confirmation', { email }),
 };

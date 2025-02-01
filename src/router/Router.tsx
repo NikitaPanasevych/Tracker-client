@@ -3,6 +3,7 @@ import DashboardLayout from '@/components/DashboardLayout';
 import ProtectedRoute from '@/components/ProtectedRoute';
 import Login from '@/pages/Auth/Login';
 import Registration from '@/pages/Auth/Registration';
+import VerifyEmail from '@/pages/Auth/VerifyEmail';
 import Home from '@/pages/Home/Home';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 
@@ -18,6 +19,10 @@ const router = createBrowserRouter([
 	{
 		path: '/register',
 		element: <Registration />,
+	},
+	{
+		path: '/verify-email',
+		element: <VerifyEmail />,
 	},
 	{
 		element: <ProtectedRoute />,
