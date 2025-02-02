@@ -129,13 +129,21 @@ const AuthForm = ({ type }: { type: 'login' | 'register' }) => {
 					</span>
 					<Link
 						to={type === 'login' ? '/register' : '/login'}
-						className="ml-2 text-sm font-medium text-blue-600 hover:text-blue-500"
+						className="ml-2 text-sm font-medium text-purple-500 hover:text-purple-600"
 					>
 						{type === 'login' ? 'Register' : 'Login'}
 					</Link>
 				</div>
 
 				<Separator className="my-6" />
+				<div className="flex justify-center items-center mt-4">
+					<span>
+						Forgot your password?{' '}
+						<Link to="/forgot-password">
+							<span className="font-medium text-sm text-purple-500 hover:text-purple-600">Reset it</span>
+						</Link>
+					</span>
+				</div>
 			</CardContent>
 		</>
 	);
