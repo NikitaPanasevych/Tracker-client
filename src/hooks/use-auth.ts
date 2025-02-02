@@ -1,6 +1,6 @@
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { authApi } from '../api/auth';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 export function useLogin() {
 	const queryClient = useQueryClient();
@@ -51,5 +51,27 @@ export function useLogout() {
 		onError: (error) => {
 			console.error('Logout failed:', error);
 		},
+	});
+}
+
+export function useForgotPassword() {
+	return useMutation({
+		mutationFn: authApi.forgotPassword,
+	});
+}
+
+export function useValidateResetToken() {
+	return useQuery({
+		queryKey: ['validateToken'],
+		queryFn: () => authApi.validateResetToken,
+	});
+}
+
+export function useResetPassword(token: string | undefined) {
+	const navigate = useNavigate();
+
+	return useMutation({
+		mutationFn: ({ newPassword }: { newPassword: string }) => authApi.resetPassword(newPassword, token),
+		onSuccess: () => navigate('/login'),
 	});
 }

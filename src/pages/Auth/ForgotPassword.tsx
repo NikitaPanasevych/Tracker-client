@@ -1,16 +1,13 @@
 // ForgotPasswordPage.tsx
 import { useForm } from 'react-hook-form';
-import { useMutation } from '@tanstack/react-query';
-import { apiClient } from '@/api/client';
 import AuthLayout from '@/components/AuthLayout';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
+import { useForgotPassword } from '@/hooks/use-auth';
 
 export default function ForgotPasswordPage() {
 	const { register, handleSubmit } = useForm();
-	const { mutate, isPending, isSuccess } = useMutation({
-		mutationFn: (email: string) => apiClient.post('/auth/forgot-password', { email }),
-	});
+	const { mutate, isPending, isSuccess } = useForgotPassword();
 
 	return (
 		<AuthLayout>
